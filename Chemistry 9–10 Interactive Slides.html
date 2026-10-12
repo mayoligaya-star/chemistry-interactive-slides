@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chemistry 9–10 Slides | The Earth School El Nido</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚗️</text></svg>">
+<style>
+:root{
+  --paper:#F6F7FA; --card:#FFFFFF; --ink:#1C1A2B; --muted:#5B586C; --line:#DADCE5;
+  --purple:#5B3FA8; --teal:#0E8388; --ok:#1F8A4C; --bad:#C0392B;
+  --u1:#5B3FA8; --u2:#0E8388; --u3:#B26B00; --u4:#2F6FB3; --u5:#A23B72; --u6:#3D7A36;
+  --sans:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#15141D; --card:#1E1C29; --ink:#ECEAF4; --muted:#A8A5B8; --line:#34313F; --purple:#A48CF0; --teal:#4CC3C6; --ok:#4FC37E; --bad:#F07467;
+  --u1:#A48CF0; --u2:#4CC3C6; --u3:#E8A63C; --u4:#74A9E8; --u5:#E07BB0; --u6:#86C77D;}}
+:root[data-theme="dark"]{
+  --paper:#15141D; --card:#1E1C29; --ink:#ECEAF4; --muted:#A8A5B8; --line:#34313F; --purple:#A48CF0; --teal:#4CC3C6; --ok:#4FC37E; --bad:#F07467;
+  --u1:#A48CF0; --u2:#4CC3C6; --u3:#E8A63C; --u4:#74A9E8; --u5:#E07BB0; --u6:#86C77D;}
+*,*::before,*::after{box-sizing:inherit}
+html,body{height:100%;margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:clamp(1rem,1.45vw,1.3rem);line-height:1.55;-webkit-font-smoothing:antialiased;overflow:hidden}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:4px}
+h1,h2,h3,h4{font-family:var(--sans);line-height:1.15;letter-spacing:-.01em;margin:0}
+h4{font-size:1em;margin:.2em 0 .3em}
+sub,sup{font-size:.72em;line-height:0}
+p{margin:.45em 0}
+ul,ol{margin:.4em 0;padding-left:1.3em}li{margin:.25em 0}
+button{font:inherit;color:inherit}
+
+.app{display:flex;flex-direction:column;height:100%}
+.stage{position:relative;flex:1;overflow:hidden}
+.slide{position:absolute;inset:0;overflow-y:auto;padding:clamp(1rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);display:none}
+.slide.on{display:block;animation:in .25s ease-out}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.in{max-width:1120px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;justify-content:center;gap:.6rem}
+
+/* element tile */
+.tile{--s:4.2rem;width:var(--s);height:var(--s);flex:none;border:2px solid var(--uc);border-radius:10px;background:color-mix(in srgb,var(--uc) 12%,var(--card));display:grid;place-items:center;position:relative;font-family:var(--sans);font-weight:800;font-size:calc(var(--s)*.4);color:var(--uc)}
+.tile small{position:absolute;top:.25rem;left:.4rem;font-size:calc(var(--s)*.17);font-weight:700;color:var(--ink)}
+.head{display:flex;align-items:center;gap:1rem;margin-bottom:.4rem}
+.head .k{font-family:var(--sans);font-size:.78em;color:var(--muted);font-weight:600}
+.head h2{font-size:clamp(1.5rem,3vw,2.4rem)}
+
+/* title + unit slides */
+.cover .in{align-items:flex-start}
+.cover h1{font-size:clamp(2.4rem,7vw,5.2rem);font-weight:800;letter-spacing:-.03em;line-height:1}
+.cover .lede{font-size:1.15em;max-width:38ch;color:var(--muted)}
+.grid20{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:.4rem;width:100%;margin-top:1rem}
+.grid20 button{all:unset;cursor:pointer}
+.grid20 .tile{--s:100%;aspect-ratio:1;width:100%;height:auto;font-size:clamp(.9rem,2.2vw,1.6rem)}
+.grid20 .tile small{font-size:clamp(.55rem,1vw,.8rem)}
+.grid20 button:hover .tile,.grid20 button:focus-visible .tile{background:color-mix(in srgb,var(--uc) 28%,var(--card))}
+.unit .in{align-items:flex-start}
+.unit .num{font-family:var(--sans);font-weight:800;font-size:clamp(5rem,18vw,13rem);line-height:.85;color:var(--uc);letter-spacing:-.05em}
+.unit h2{font-size:clamp(1.8rem,4.5vw,3.4rem);max-width:18ch}
+.unit .chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.unit .chip{display:flex;align-items:center;gap:.6rem;font-family:var(--sans);font-weight:600;font-size:.9em}
+.unit .chip .tile{--s:2.6rem}
+
+/* content */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.def{border-left:4px solid var(--uc);background:color-mix(in srgb,var(--uc) 8%,var(--card));padding:.6em .9em;border-radius:0 8px 8px 0;margin:.5em 0}
+.big{font-family:var(--sans);font-weight:600;font-size:1.25em;text-align:center;padding:.6em;border:1.5px dashed var(--uc);border-radius:10px;margin:.5em 0}
+.big.sm{font-size:1em}.big small{font-weight:400;color:var(--muted)}
+.note{color:var(--muted);font-style:italic}
+table{border-collapse:collapse;width:100%;font-size:.92em;margin:.4em 0;background:var(--card);border-radius:8px;overflow:hidden}
+th,td{border:1px solid var(--line);padding:.35em .6em;text-align:left;vertical-align:top}
+th{font-family:var(--sans);font-weight:600;background:color-mix(in srgb,var(--uc) 10%,var(--card))}
+.iso{display:inline-flex;align-items:center;font-family:var(--sans);font-weight:600}
+.iso>span{display:inline-flex;flex-direction:column;align-items:flex-end;line-height:1;font-size:.62em;margin-right:.08em}
+.iso>span sup,.iso>span sub{font-size:1em;line-height:1.05;vertical-align:baseline}
+.bigsym{font-size:3.4em;text-align:center}
+.rules{list-style:none;padding:0;font-family:var(--sans);font-weight:600}
+.rules li{padding:.3em .6em;border-bottom:1px solid var(--line)}
+.fig{display:flex;flex-direction:column;align-items:center}
+.dia{width:100%;max-width:340px;height:auto}
+.fig .two .dia{max-width:260px}
+.key{display:flex;gap:1rem;font-family:var(--sans);font-size:.8em;color:var(--muted)}
+.key i{display:inline-block;width:.8em;height:.8em;border-radius:50%;margin-right:.3em;vertical-align:-.05em}
+.bohrs{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;font-family:var(--sans);font-size:.85em;text-align:center}
+.bohrs svg{display:block;margin:0 auto}
+.time{list-style:none;padding:0;border-left:3px solid var(--uc);margin-left:.5rem}
+.time li{padding:.3em 0 .5em 1rem;position:relative}
+.time li::before{content:"";position:absolute;left:-.5rem;top:.75em;width:.75rem;height:.75rem;border-radius:50%;background:var(--uc)}
+
+/* pH widget */
+.ph label{font-family:var(--sans);font-weight:600}
+.ph input{width:100%;accent-color:var(--uc);margin:.6em 0}
+.phbox{border-radius:12px;padding:1.2em;color:#111;font-family:var(--sans);display:flex;flex-direction:column;gap:.2em;transition:background .2s;min-height:7em;justify-content:center}
+.phbox b{font-size:1.4em}
+
+/* column widget */
+.col2{display:grid;grid-template-columns:minmax(10rem,16rem) 1fr;gap:1.2rem;align-items:center}
+.fcol{display:flex;flex-direction:column;gap:3px;border:2px solid var(--ink);border-radius:30px 30px 8px 8px;padding:.6rem;background:linear-gradient(to bottom,color-mix(in srgb,var(--u4) 18%,var(--card)),color-mix(in srgb,var(--u3) 25%,var(--card)))}
+.fcol button{font-family:var(--sans);font-weight:600;font-size:.85em;padding:.35em;border:1px solid var(--line);background:var(--card);border-radius:6px;cursor:pointer}
+.fcol button[aria-pressed=true]{background:var(--uc);color:var(--card);border-color:var(--uc)}
+.ftop,.fbot{font-family:var(--sans);font-size:.7em;color:var(--muted);text-align:center}
+.fout{display:flex;flex-direction:column;gap:.3em;border:1.5px solid var(--line);border-radius:10px;padding:1em;background:var(--card);min-height:8em}
+.fout b{font-family:var(--sans);font-size:1.2em}
+
+/* worked example + problems */
+.prob{font-size:1.12em;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.8em 1em}
+.steps{display:flex;flex-direction:column;gap:.5rem}
+.stage-b{display:none}
+.stage-b.show{display:block;animation:in .25s ease-out}
+.row{display:grid;grid-template-columns:8.5em 1fr;gap:.8em;padding:.35em 0;border-bottom:1px dashed var(--line)}
+.row b{font-family:var(--sans);color:var(--uc)}
+.ans{font-family:var(--sans);font-weight:700;font-size:1.1em;padding:.6em .9em;border-radius:8px;background:color-mix(in srgb,var(--ok) 14%,var(--card));border:1.5px solid var(--ok)}
+.reveal{align-self:flex-start;font-family:var(--sans);font-weight:600;font-size:.9em;padding:.5em 1em;border-radius:8px;border:1.5px solid var(--uc);background:var(--card);color:var(--uc);cursor:pointer}
+.reveal:hover{background:color-mix(in srgb,var(--uc) 12%,var(--card))}
+.reveal[hidden]{display:none}
+
+/* quiz */
+.qwrap{display:grid;grid-template-columns:12rem 1fr;gap:1.5rem;align-items:start}
+.qnav{display:flex;flex-direction:column;gap:.4rem;font-family:var(--sans)}
+.qnav button{display:flex;align-items:center;gap:.6rem;padding:.45em .6em;border:1.5px solid var(--line);border-radius:8px;background:var(--card);cursor:pointer;font-size:.85em;font-weight:600;text-align:left}
+.qnav button[aria-current=true]{border-color:var(--uc);background:color-mix(in srgb,var(--uc) 10%,var(--card))}
+.qnav .dot{width:1.5em;height:1.5em;border-radius:50%;display:grid;place-items:center;font-size:.8em;border:1.5px solid var(--muted);flex:none}
+.qnav .ok .dot{background:var(--ok);border-color:var(--ok);color:var(--card)}
+.qnav .no .dot{background:var(--bad);border-color:var(--bad);color:var(--card)}
+.score{font-family:var(--sans);font-size:.85em;color:var(--muted);margin-top:.4rem}
+.q{display:none;flex-direction:column;gap:.7rem}.q.show{display:flex}
+.q .qt{font-size:1.15em;font-weight:500}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.opt{text-align:left;padding:.7em .9em;border:1.5px solid var(--line);border-radius:10px;background:var(--card);cursor:pointer;display:flex;gap:.7em;align-items:baseline;font-family:var(--serif)}
+.opt:hover:not(:disabled){border-color:var(--uc)}
+.opt .l{font-family:var(--sans);font-weight:700;color:var(--muted)}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--card))}
+.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 13%,var(--card))}
+.fb{display:none;padding:.6em .9em;border-radius:8px;font-size:.95em}
+.fb.show{display:block}
+.fb.good{background:color-mix(in srgb,var(--ok) 12%,var(--card));border-left:4px solid var(--ok)}
+.fb.bad{background:color-mix(in srgb,var(--bad) 10%,var(--card));border-left:4px solid var(--bad)}
+.fb b{font-family:var(--sans)}
+.qfoot{display:flex;gap:.6rem;flex-wrap:wrap}
+.qfoot button{font-family:var(--sans);font-weight:600;font-size:.88em;padding:.5em 1em;border-radius:8px;border:1.5px solid var(--line);background:var(--card);cursor:pointer}
+.qfoot .go{background:var(--uc);border-color:var(--uc);color:var(--card)}
+.qfoot button:disabled{opacity:.4;cursor:default}
+.badge{font-family:var(--sans);font-weight:700;font-size:.75em;padding:.2em .6em;border-radius:20px;background:color-mix(in srgb,var(--uc) 15%,var(--card));color:var(--uc);align-self:flex-start}
+
+/* bottom bar */
+.bar{display:flex;align-items:center;gap:.6rem;padding:.5rem 1rem;border-top:1px solid var(--line);background:var(--card);font-family:var(--sans);font-size:.85rem;position:relative}
+.bar .prog{position:absolute;left:0;top:-1px;height:3px;background:var(--uc,var(--purple));transition:width .2s}
+.bar .lbl{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--muted)}
+.bar button{font-family:var(--sans);font-weight:600;font-size:.85rem;padding:.45rem .8rem;border:1px solid var(--line);border-radius:8px;background:var(--paper);cursor:pointer;color:var(--ink)}
+.bar button:hover{border-color:var(--uc,var(--purple))}
+.bar .cnt{font-variant-numeric:tabular-nums;color:var(--muted);min-width:4.5em;text-align:center}
+.menu{position:absolute;bottom:3.4rem;left:1rem;width:min(22rem,calc(100% - 2rem));max-height:70vh;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.5rem;display:none;z-index:5;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.menu.open{display:block}
+.menu .mu{font-family:var(--sans);font-size:.75rem;font-weight:700;color:var(--muted);padding:.6rem .5rem .2rem}
+.menu button{all:unset;display:flex;gap:.6rem;align-items:center;width:100%;padding:.35rem .5rem;border-radius:6px;cursor:pointer;font-family:var(--sans);font-size:.88rem}
+.menu button:hover,.menu button:focus-visible{background:var(--paper)}
+.menu .tile{--s:1.9rem;border-width:1.5px;border-radius:6px}
+
+@media (max-width:760px){
+  .two,.three,.qwrap,.col2{grid-template-columns:1fr}
+  .opts{grid-template-columns:1fr}
+  .qnav{flex-direction:row;flex-wrap:wrap}
+  .qnav button span.t{display:none}
+  .grid20{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .row{grid-template-columns:1fr;gap:0}
+  .bar .lbl{display:none}
+  .bar{gap:.3rem;padding:.45rem .5rem;justify-content:space-between}
+  .bar button{padding:.4rem .55rem;font-size:.8rem}
+  .bar .cnt{min-width:3.6em;font-size:.78rem}
+  .slide{padding-bottom:2rem}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <main class="stage" id="stage" aria-live="polite"></main>
+  <nav class="bar" aria-label="Slide controls">
+    <div class="prog" id="prog"></div>
+    <button id="mbtn" aria-expanded="false" aria-controls="menu">Chapters</button>
+    <span class="lbl" id="lbl"></span>
+    <button id="theme" aria-label="Switch light or dark mode">Dark</button>
+    <button id="prev" aria-label="Previous slide">Back</button>
+    <span class="cnt" id="cnt"></span>
+    <button id="next" aria-label="Next slide">Next</button>
+    <div class="menu" id="menu"></div>
+  </nav>
+</div>
+<script>
+const UNITS={1:'Atomic structure and the Periodic Table',2:'Ions, bonding and compounds',3:'Chemical reactions',4:'Periodic trends',5:'Electrochemistry',6:'Organic chemistry'};
+const CH={
+1:['At','Atom structure',1],2:['Is','Isotopes',1],3:['Mo','Relative mass and the mole',1],4:['Pt','Periodic Table development',1],5:['Ec','Electron configuration',1],
+6:['Io','Formation of ions',2],7:['Fn','Formulae and naming',2],8:['Cb','Covalent bonding',2],
+9:['Eq','Balancing equations',3],10:['pH','Acids, bases and pH',3],11:['Ac','Reactions of acids',3],12:['Sa','Preparation of salts',3],13:['En','Energy changes',3],
+14:['Gr','Group 1 metals',4],15:['El','Electrolysis',5],
+16:['Hc','Alkanes, alkenes and alkynes',6],17:['Cm','Combustion of alkanes',6],18:['Fd','Crude oil and fractional distillation',6],19:['Ck','Cracking',6],20:['Po','Macromolecules',6]};
+
+const ATOM_SVG=`<svg viewBox="-110 -110 220 220" class="dia" role="img" aria-label="Atom with a nucleus of protons and neutrons and electrons in two shells">
+<circle r="58" fill="none" stroke="var(--line)" stroke-width="2"/><circle r="95" fill="none" stroke="var(--line)" stroke-width="2"/>
+<g><circle cx="-7" cy="-6" r="9" fill="var(--uc)"/><circle cx="8" cy="-5" r="9" fill="var(--muted)"/><circle cx="-6" cy="9" r="9" fill="var(--muted)"/><circle cx="9" cy="9" r="9" fill="var(--uc)"/></g>
+<circle cx="0" cy="-58" r="6" fill="var(--teal)"/><circle cx="0" cy="58" r="6" fill="var(--teal)"/><circle cx="95" cy="0" r="6" fill="var(--teal)"/><circle cx="-67" cy="67" r="6" fill="var(--teal)"/>
+<text x="0" y="-70" text-anchor="middle" font-size="11" fill="var(--muted)">shell</text></svg>
+<div class="key"><span><i style="background:var(--uc)"></i>proton</span><span><i style="background:var(--muted)"></i>neutron</span><span><i style="background:var(--teal)"></i>electron</span></div>`;
+
+const ENERGY_SVG=`<div class="two">
+<svg viewBox="0 0 260 180" class="dia" role="img" aria-label="Exothermic reaction pathway: products lower than reactants">
+<path d="M30 15 V160 H250" fill="none" stroke="var(--ink)" stroke-width="2"/><text x="12" y="90" font-size="12" transform="rotate(-90 12 90)" text-anchor="middle" fill="var(--muted)">energy</text>
+<path d="M40 70 H90 C115 70 115 25 140 25 C165 25 165 125 190 125 H245" fill="none" stroke="var(--uc)" stroke-width="3"/>
+<text x="45" y="62" font-size="12" fill="var(--ink)">reactants</text><text x="192" y="117" font-size="12" fill="var(--ink)">products</text>
+<line x1="235" y1="72" x2="235" y2="122" stroke="var(--ink)" stroke-dasharray="4 3"/><text x="214" y="100" font-size="12" font-weight="700" fill="var(--ink)">ΔH −</text>
+<text x="128" y="16" font-size="12" fill="var(--muted)">Ea</text><text x="140" y="175" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">Exothermic</text></svg>
+<svg viewBox="0 0 260 180" class="dia" role="img" aria-label="Endothermic reaction pathway: products higher than reactants">
+<path d="M30 15 V160 H250" fill="none" stroke="var(--ink)" stroke-width="2"/>
+<path d="M40 125 H90 C115 125 115 25 140 25 C165 25 165 70 190 70 H245" fill="none" stroke="var(--teal)" stroke-width="3"/>
+<text x="45" y="117" font-size="12" fill="var(--ink)">reactants</text><text x="192" y="62" font-size="12" fill="var(--ink)">products</text>
+<line x1="235" y1="73" x2="235" y2="123" stroke="var(--ink)" stroke-dasharray="4 3"/><text x="212" y="102" font-size="12" font-weight="700" fill="var(--ink)">ΔH +</text>
+<text x="128" y="16" font-size="12" fill="var(--muted)">Ea</text><text x="140" y="175" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">Endothermic</text></svg></div>`;
+
+const CELL_SVG=`<svg viewBox="0 0 300 210" class="dia" role="img" aria-label="Electrolytic cell with cathode on the left and anode on the right">
+<rect x="40" y="70" width="220" height="125" rx="8" fill="color-mix(in srgb,var(--uc) 12%,transparent)" stroke="var(--ink)" stroke-width="2"/>
+<rect x="85" y="30" width="18" height="140" fill="var(--muted)"/><rect x="197" y="30" width="18" height="140" fill="var(--muted)"/>
+<path d="M94 30 V12 H206 V30" fill="none" stroke="var(--ink)" stroke-width="2"/><rect x="132" y="2" width="36" height="20" rx="3" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/><text x="150" y="16" text-anchor="middle" font-size="11" fill="var(--ink)">− +</text>
+<text x="94" y="58" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">cathode −</text><text x="206" y="58" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">anode +</text>
+<text x="150" y="118" text-anchor="middle" font-size="12" fill="var(--ink)">electrolyte</text>
+<text x="150" y="150" text-anchor="middle" font-size="12" fill="var(--uc)">cations →  cathode</text><text x="150" y="172" text-anchor="middle" font-size="12" fill="var(--teal)">anions →  anode</text></svg>`;
+
+const PH_WIDGET=`<div class="ph"><label for="phr">Choose a pH: <b id="phv">7</b></label>
+<input id="phr" type="range" min="0" max="14" step="1" value="7">
+<div class="phbox" id="phbox"><b id="pht">Neutral</b><span id="phe">pure water</span></div></div>`;
+
+const COLUMN_WIDGET=`<div class="col2"><div class="fcol" role="group" aria-label="Fractionating column, top to bottom">
+<div class="ftop">cool, about 25 °C</div>
+<button data-f="0">Refinery gases</button><button data-f="1">Petrol</button><button data-f="2">Naphtha</button><button data-f="3">Kerosene</button><button data-f="4">Diesel</button><button data-f="5">Fuel oil</button><button data-f="6">Bitumen</button>
+<div class="fbot">hot, about 350 °C</div></div>
+<div class="fout" id="fout"><b>Tap a fraction</b><span>Each one condenses at a different height in the column.</span></div></div>`;
+
+/* Slide list. L = lesson, W = worked example, Q = practice test */
+const DECK=[
+/* ---------- Unit 1 ---------- */
+{u:1},
+{c:1,t:'L',h:'Inside the atom',b:`<div class="two"><div>
+<p>An atom has a tiny, dense centre called the <b>nucleus</b>, holding <b>protons</b> and <b>neutrons</b>. <b>Electrons</b> move around it in <b>shells</b>.</p>
+<table><tr><th>Particle</th><th>Where</th><th>Relative mass</th><th>Charge</th></tr>
+<tr><td>Proton</td><td>Nucleus</td><td>1</td><td>+1</td></tr><tr><td>Neutron</td><td>Nucleus</td><td>1</td><td>0</td></tr><tr><td>Electron</td><td>Shells</td><td>1/1836</td><td>−1</td></tr></table>
+<p class="note">If an atom were the size of the El Nido town plaza, the nucleus would be a calamansi seed in the middle.</p></div>
+<div class="fig">${ATOM_SVG}</div></div>`},
+{c:1,t:'L',h:'Atomic number and mass number',b:`<div class="two"><div>
+<div class="def"><b>Atomic number (Z)</b>: the number of protons. Every atom of an element has the same Z.</div>
+<div class="def"><b>Mass number (A)</b>: protons + neutrons.</div>
+<p>An atom is neutral because protons (+) and electrons (−) are equal in number.</p></div>
+<div><div class="bigsym">{{23|11|Na}}</div>
+<ul class="rules"><li>protons = Z</li><li>neutrons = A − Z</li><li>electrons = protons (neutral atom)</li></ul></div></div>`},
+{c:1,t:'W',q:'Olive finds {{27|13|Al}} on a can recycling poster. How many protons, neutrons and electrons are in one aluminium atom?',
+ g:[['Given','A = 27, Z = 13']],s:[['Protons','Z = 13'],['Neutrons','A − Z = 27 − 13 = 14'],['Electrons','same as protons = 13']],a:'13 protons, 14 neutrons, 13 electrons'},
+{c:1,t:'Q',mc:[
+ ['Which particle has no charge?',['Proton','Neutron','Electron','Nucleus'],1,'Neutrons are neutral. Protons are +1 and electrons are −1.'],
+ ['How many neutrons are in {{19|9|F}}?',['9','10','19','28'],1,'Neutrons = A − Z = 19 − 9 = 10.'],
+ ['The mass number counts…',['protons only','protons and electrons','protons and neutrons','neutrons only'],2,'Electrons are so light that they are not counted.'],
+ ['Rutherford\'s gold foil experiment showed that the atom…',['has electrons in fixed shells','is mostly empty space with a small, dense, positive nucleus','is a solid sphere','contains neutrons'],1,'Most alpha particles passed straight through, but a few bounced back off the nucleus.']],
+ p:{q:'Luke reads {{39|19|K}} on a poster about bananas and potassium. Find the protons, neutrons and electrons.',g:[['Given','A = 39, Z = 19'],['Rules','p = Z, n = A − Z, e = p']],s:[['Solution','p = 19; n = 39 − 19 = 20; e = 19']],a:'19 protons, 20 neutrons, 19 electrons'}},
+
+{c:2,t:'L',h:'Same element, different neutrons',b:`<div class="def"><b>Isotopes</b> are atoms of the same element with the same number of protons but a different number of neutrons.</div>
+<table><tr><th>Isotope</th><th>Protons</th><th>Neutrons</th><th>Electrons</th><th>Abundance</th></tr>
+<tr><td>{{12|6|C}}</td><td>6</td><td>6</td><td>6</td><td>about 98.9%</td></tr><tr><td>{{13|6|C}}</td><td>6</td><td>7</td><td>6</td><td>about 1.1%</td></tr><tr><td>{{14|6|C}}</td><td>6</td><td>8</td><td>6</td><td>tiny trace</td></tr></table>
+<p>Reactions involve electrons, not neutrons, so isotopes have the <b>same chemical properties</b>. They differ in mass, and some are radioactive. Carbon-14 dates bones and shells from Palawan's Tabon Caves.</p>`},
+{c:2,t:'L',h:'Relative atomic mass from isotopes',b:`<p>Most elements are a mixture of isotopes, so we use a weighted average called the <b>relative atomic mass, A<sub>r</sub></b>.</p>
+<div class="big">A<sub>r</sub> = (mass₁ × %₁ + mass₂ × %₂ + …) ÷ 100</div>
+<p>The answer is always closer to the mass of the most common isotope.</p>`},
+{c:2,t:'W',q:'Seawater in Bacuit Bay contains chloride. Chlorine is 75% chlorine-35 and 25% chlorine-37. Calculate the relative atomic mass of chlorine.',
+ g:[['Given','Cl-35 at 75%, Cl-37 at 25%'],['Formula','A<sub>r</sub> = Σ(mass × %) ÷ 100']],s:[['Solution','(35 × 75 + 37 × 25) ÷ 100 = (2625 + 925) ÷ 100 = 3550 ÷ 100']],a:'A<sub>r</sub> of chlorine = 35.5'},
+{c:2,t:'Q',mc:[
+ ['Isotopes of an element have the same number of…',['neutrons','protons','nucleons','mass number'],1,'Same protons (same element), different neutrons.'],
+ ['Why do carbon-12 and carbon-14 react in the same way?',['They have the same mass','They have the same electron arrangement','They have the same number of neutrons','They are both radioactive'],1,'Chemistry depends on electrons, and isotopes have the same electrons.'],
+ ['Which isotope is used to date bones from the Tabon Caves?',['Cobalt-60','Iodine-131','Carbon-14','Carbon-12'],2,'Living things take in carbon-14; after death it slowly decays.'],
+ ['Boron is 20% boron-10 and 80% boron-11. What is its A<sub>r</sub>?',['10.2','10.5','10.8','11.0'],2,'(10 × 20 + 11 × 80) ÷ 100 = 1080 ÷ 100 = 10.8']],
+ p:{q:'Copper wire in the science lab is 69% copper-63 and 31% copper-65. Find the A<sub>r</sub> of copper to one decimal place.',g:[['Given','Cu-63 at 69%, Cu-65 at 31%'],['Formula','A<sub>r</sub> = Σ(mass × %) ÷ 100']],s:[['Solution','(63 × 69 + 65 × 31) ÷ 100 = (4347 + 2015) ÷ 100 = 6362 ÷ 100']],a:'A<sub>r</sub> = 63.6'}},
+
+{c:3,t:'L',h:'Relative formula mass, M<sub>r</sub>',b:`<div class="def"><b>M<sub>r</sub></b> is the sum of the relative atomic masses of all the atoms in a formula. It has no units.</div>
+<div class="two"><div><h4>Limestone, [[CaCO3]]</h4><p>1 Ca, 1 C, 3 O<br>40 + 12 + (3 × 16) = <b>100</b></p></div>
+<div><h4>Brackets: [[Ca(OH)2]]</h4><p>Multiply everything inside by the number outside.<br>40 + 2 × (16 + 1) = <b>74</b></p></div></div>
+<p class="note">A<sub>r</sub> values: H 1, C 12, N 14, O 16, Na 23, Mg 24, S 32, Cl 35.5, Ca 40</p>`},
+{c:3,t:'L',h:'The mole',b:`<p>Chemists count particles in large groups called moles, like counting rice in sacks.</p>
+<div class="def">One <b>mole</b> contains <b>6.02 × 10<sup>23</sup></b> particles (the Avogadro constant). The <b>molar mass</b> in g/mol has the same number as M<sub>r</sub>.</div>
+<div class="two"><div class="big">n = m ÷ M</div><div class="big">particles = n × 6.02 × 10<sup>23</sup></div></div>
+<div class="big sm">% of element = (A<sub>r</sub> × number of atoms ÷ M<sub>r</sub>) × 100</div>`},
+{c:3,t:'W',q:'Cas has 50 g of crushed limestone, [[CaCO3]]. How many moles is this?',
+ g:[['Given','m = 50 g, M = 100 g/mol'],['Formula','n = m ÷ M']],s:[['Solution','n = 50 ÷ 100']],a:'0.50 mol'},
+{c:3,t:'Q',mc:[
+ ['What is the M<sub>r</sub> of [[CO2]]?',['28','44','32','60'],1,'12 + (2 × 16) = 44'],
+ ['What is the M<sub>r</sub> of [[H2SO4]]?',['49','96','98','50'],2,'(2 × 1) + 32 + (4 × 16) = 98'],
+ ['How many moles are in 36 g of water (M<sub>r</sub> 18)?',['0.5','2','18','648'],1,'n = 36 ÷ 18 = 2 mol'],
+ ['One mole of any substance contains…',['12 g','6.02 × 10<sup>23</sup> particles','1 g','22 particles'],1,'This is the Avogadro constant.']],
+ p:{q:'Sophia weighs 4.0 g of sodium hydroxide, [[NaOH]], for a soap-making lab. How many moles is this, and how many formula units?',g:[['Given','m = 4.0 g, M = 23 + 16 + 1 = 40 g/mol'],['Formula','n = m ÷ M, then particles = n × 6.02 × 10<sup>23</sup>']],s:[['Solution','n = 4.0 ÷ 40 = 0.10 mol; 0.10 × 6.02 × 10<sup>23</sup>']],a:'0.10 mol, which is 6.02 × 10<sup>22</sup> formula units'}},
+
+{c:4,t:'L',h:'A hundred years of arranging elements',b:`<ol class="time">
+<li><b>1829, Döbereiner</b>: triads of three similar elements. The middle mass is close to the average of the other two.</li>
+<li><b>1864, Newlands</b>: every eighth element was similar, like musical octaves. It broke down after calcium and was rejected.</li>
+<li><b>1869, Mendeleev</b>: left gaps for undiscovered elements and swapped Te and I to keep similar elements together. He predicted eka-silicon (mass about 72); germanium (72.6) was found in 1886.</li>
+<li><b>1913, Moseley</b>: elements are ordered by <b>atomic number</b>, which explains Mendeleev's swaps.</li></ol>`},
+{c:4,t:'L',h:'The modern Periodic Table',b:`<div class="two"><div>
+<div class="def"><b>Groups</b> are columns: same number of outer electrons, similar reactions.</div>
+<div class="def"><b>Periods</b> are rows: same number of occupied shells.</div>
+<p>Metals are on the left and centre; non-metals on the right of the staircase line from boron to astatine.</p></div>
+<table><tr><th>Group</th><th>Name</th><th>Examples</th></tr><tr><td>1</td><td>Alkali metals</td><td>Li, Na, K</td></tr><tr><td>2</td><td>Alkaline earth metals</td><td>Mg, Ca</td></tr><tr><td>centre</td><td>Transition metals</td><td>Fe, Cu</td></tr><tr><td>7</td><td>Halogens</td><td>F, Cl, Br</td></tr><tr><td>0</td><td>Noble gases</td><td>He, Ne, Ar</td></tr></table></div>`},
+{c:4,t:'W',q:'Rock checks whether calcium (40), strontium (88) and barium (137) form a Döbereiner triad.',
+ g:[['Given','Ca 40, Sr 88, Ba 137'],['Test','Is the middle mass close to the average of the other two?']],s:[['Solution','(40 + 137) ÷ 2 = 177 ÷ 2 = 88.5']],a:'88.5 is very close to 88, so they form a triad'},
+{c:4,t:'Q',mc:[
+ ['The modern Periodic Table is arranged in order of…',['atomic mass','date of discovery','atomic number','density'],2,'Moseley showed each element has a different number of protons.'],
+ ['Why did scientists accept Mendeleev\'s table?',['It was in alphabetical order','His predictions for missing elements matched later discoveries','It had no gaps','It used atomic numbers'],1,'Germanium matched his predictions for eka-silicon.'],
+ ['Elements in the same group have the same…',['number of shells','mass','number of outer electrons','number of neutrons'],2,'That is why they react in similar ways.'],
+ ['Why was Newlands\' law of octaves rejected?',['The pattern broke down after calcium','He left too many gaps','He used atomic numbers','He only used three elements'],0,'He also forced unlike elements into the same column.']],
+ p:{q:'Do chlorine (35.5), bromine (80) and iodine (127) form a triad?',g:[['Given','Cl 35.5, Br 80, I 127'],['Test','average of first and last ≈ middle?']],s:[['Solution','(35.5 + 127) ÷ 2 = 162.5 ÷ 2 = 81.25']],a:'81.25 is close to 80, so yes, they form a triad'}},
+
+{c:5,t:'L',h:'Filling the shells',b:`<div class="two"><div>
+<p>Electrons fill the shell closest to the nucleus first.</p>
+<table><tr><th>Shell</th><th>Holds up to</th></tr><tr><td>1st</td><td>2</td></tr><tr><td>2nd</td><td>8</td></tr><tr><td>3rd</td><td>8 (for the first 20 elements)</td></tr><tr><td>4th</td><td>the rest, for K and Ca</td></tr></table>
+<div class="def">Outer electrons = <b>group number</b>. Number of shells = <b>period number</b>.</div></div>
+<div class="bohrs"><div data-bohr="C,6"></div><div data-bohr="Na,11"></div><div data-bohr="Cl,17"></div></div></div>`},
+{c:5,t:'L',h:'Why the outer shell matters',b:`<p>Outer electrons are the ones that take part in reactions, so elements in the same group react in similar ways.</p>
+<div class="def">Noble gases (group 0) have a <b>full outer shell</b>. This is very stable, so they hardly react.</div>
+<p>Other atoms react to get a full outer shell by <b>losing</b>, <b>gaining</b> or <b>sharing</b> electrons (Chapters 6 and 8).</p>
+<p class="note">Working backwards: group 2, period 4 means 4 shells and 2 outer electrons, so 2, 8, 8, 2, which is calcium.</p>`},
+{c:5,t:'W',q:'Write the electron arrangement of chlorine (atomic number 17) and give its group and period.',
+ g:[['Given','17 electrons']],s:[['Fill shells','2 in the 1st, 8 in the 2nd, 7 left for the 3rd'],['Read it','7 outer electrons, 3 shells']],a:'2, 8, 7: group 7, period 3'},
+{c:5,t:'Q',mc:[
+ ['What is the electron arrangement of magnesium (Z = 12)?',['2, 10','2, 8, 2','2, 8, 1, 1','2, 2, 8'],1,'2 + 8 + 2 = 12'],
+ ['An element is 2, 8, 6. Which group is it in?',['2','3','6','8'],2,'6 outer electrons means group 6 (it is sulfur).'],
+ ['Potassium is 2, 8, 8, 1. Which period is it in?',['1','3','4','8'],2,'Four occupied shells means period 4.'],
+ ['Why are noble gases unreactive?',['They are very heavy','They have one outer electron','They have a full outer shell','They have no electrons'],2,'A full outer shell is a stable arrangement.']],
+ p:{q:'Olive is told an element is in group 3, period 3. Find its electron arrangement, atomic number and name.',g:[['Given','group 3: 3 outer electrons; period 3: 3 shells']],s:[['Solution','2, 8, 3 so 2 + 8 + 3 = 13 electrons, and Z = 13']],a:'2, 8, 3; Z = 13; aluminium'}},
+
+/* ---------- Unit 2 ---------- */
+{u:2},
+{c:6,t:'L',h:'Atoms become ions',b:`<div class="def">An <b>ion</b> is a charged particle made when an atom loses or gains electrons. <b>Cations</b> are positive (metals lose electrons). <b>Anions</b> are negative (non-metals gain electrons).</div>
+<div class="two"><div class="big sm">[[Na]] → [[Na^+^]] + [[e^−^]]<br><small>2, 8, 1 → 2, 8</small></div><div class="big sm">[[Cl]] + [[e^−^]] → [[Cl^−^]]<br><small>2, 8, 7 → 2, 8, 8 (chlor<b>ide</b>)</small></div></div>
+<table><tr><th>Group</th><td>1</td><td>2</td><td>3</td><td>5</td><td>6</td><td>7</td></tr><tr><th>Ion charge</th><td>+1</td><td>+2</td><td>+3</td><td>−3</td><td>−2</td><td>−1</td></tr><tr><th>Example</th><td>[[Na^+^]]</td><td>[[Mg^2+^]]</td><td>[[Al^3+^]]</td><td>[[N^3−^]]</td><td>[[O^2−^]]</td><td>[[Cl^−^]]</td></tr></table>`},
+{c:6,t:'L',h:'Ionic bonding',b:`<p>When a metal reacts with a non-metal, electrons are <b>transferred</b> from the metal to the non-metal.</p>
+<div class="def">An <b>ionic bond</b> is the strong electrostatic attraction between oppositely charged ions.</div>
+<p>In a dot-and-cross diagram, one atom's electrons are crosses and the other's are dots. Square brackets and the charge show each ion.</p>
+<p>Ionic compounds form giant lattices. They have high melting points (NaCl melts at 801 °C) and conduct only when molten or dissolved, because then the ions can move.</p>`},
+{c:6,t:'W',q:'How many protons, neutrons and electrons are in the ion {{24|12|Mg}}<sup>2+</sup>?',
+ g:[['Given','A = 24, Z = 12, charge +2']],s:[['Protons','12 (never changes)'],['Neutrons','24 − 12 = 12'],['Electrons','+2 means 2 lost: 12 − 2 = 10']],a:'12 p, 12 n, 10 e; arrangement 2, 8'},
+{c:6,t:'Q',mc:[
+ ['Metal atoms form ions by…',['gaining electrons','losing electrons','sharing electrons','losing protons'],1,'Losing electrons leaves more protons than electrons, so the ion is positive.'],
+ ['What is the charge on an oxide ion?',['+2','−1','−2','+6'],2,'Oxygen is in group 6, so it gains 2 electrons.'],
+ ['How many electrons are in {{27|13|Al}}<sup>3+</sup>?',['13','10','16','14'],1,'13 − 3 = 10'],
+ ['An ionic bond is…',['a shared pair of electrons','the attraction between oppositely charged ions','a force between molecules','the attraction between neutrons'],1,'Positive and negative ions attract strongly.']],
+ p:{q:'William studies the chloride ion {{35|17|Cl}}<sup>−</sup> in seawater. Find its protons, neutrons, electrons and electron arrangement.',g:[['Given','A = 35, Z = 17, charge −1']],s:[['Solution','p = 17; n = 35 − 17 = 18; −1 means 1 gained: e = 17 + 1 = 18']],a:'17 p, 18 n, 18 e; arrangement 2, 8, 8'}},
+
+{c:7,t:'L',h:'Writing ionic formulae',b:`<p>An ionic compound has no overall charge, so the charges must balance. Shortcut: swap the charge numbers and simplify.</p>
+<div class="big sm">[[Al^3+^]] and [[O^2−^]] → [[Al2O3]] &nbsp; | &nbsp; [[Mg^2+^]] and [[O^2−^]] → [[Mg2O2]] → [[MgO]]</div>
+<table><tr><th>Ion</th><th>Formula</th><th>Ion</th><th>Formula</th></tr>
+<tr><td>Hydroxide</td><td>[[OH^−^]]</td><td>Sulfate</td><td>[[SO4^2−^]]</td></tr><tr><td>Nitrate</td><td>[[NO3^−^]]</td><td>Carbonate</td><td>[[CO3^2−^]]</td></tr><tr><td>Hydrogencarbonate</td><td>[[HCO3^−^]]</td><td>Phosphate</td><td>[[PO4^3−^]]</td></tr><tr><td>Ammonium</td><td>[[NH4^+^]]</td><td>Hydrogen</td><td>[[H^+^]]</td></tr></table>
+<p class="note">Use brackets for more than one compound ion: [[Ca(OH)2]], not CaOH2.</p>`},
+{c:7,t:'L',h:'Naming compounds',b:`<div class="two"><div><h4>Ionic</h4><ul><li>Metal first, name unchanged.</li><li>Single non-metal ion ends in <b>-ide</b>: chloride, oxide.</li><li>Ions with oxygen usually end in <b>-ate</b>: sulfate, nitrate.</li><li>Roman numerals show charge: iron(III) oxide is [[Fe2O3]].</li></ul></div>
+<div><h4>Covalent</h4><p>Prefixes: mono 1, di 2, tri 3, tetra 4, penta 5. The first element never takes "mono".</p>
+<table><tr><td>[[CO]]</td><td>carbon monoxide</td></tr><tr><td>[[SO3]]</td><td>sulfur trioxide</td></tr><tr><td>[[N2O4]]</td><td>dinitrogen tetroxide</td></tr><tr><td>[[CCl4]]</td><td>carbon tetrachloride</td></tr></table></div></div>`},
+{c:7,t:'W',q:'Write the formula of calcium nitrate, a fertiliser used on vegetable farms in Palawan.',
+ g:[['Ions','[[Ca^2+^]] and [[NO3^−^]]']],s:[['Balance','one [[Ca^2+^]] (+2) needs two [[NO3^−^]] (−2)'],['Brackets','more than one compound ion goes in brackets']],a:'[[Ca(NO3)2]]'},
+{c:7,t:'Q',mc:[
+ ['What is the formula of magnesium chloride?',['MgCl','[[MgCl2]]','[[Mg2Cl]]','[[Mg2Cl3]]'],1,'[[Mg^2+^]] needs two [[Cl^−^]].'],
+ ['What is the name of [[Na2SO4]]?',['sodium sulfide','disodium sulfur','sodium sulfate','sodium sulfite'],2,'[[SO4^2−^]] is the sulfate ion.'],
+ ['Which is the correct formula of calcium hydroxide?',['[[CaOH2]]','[[Ca(OH)2]]','CaOH','[[Ca2OH]]'],1,'Two hydroxide ions need brackets.'],
+ ['What is the name of [[N2O4]]?',['nitrogen oxide','nitrogen tetroxide','dinitrogen tetroxide','dinitrogen oxide'],2,'di = 2 nitrogen atoms, tetra = 4 oxygen atoms.']],
+ p:{q:'Rock needs the formula of ammonium phosphate for a fertiliser label.',g:[['Ions','[[NH4^+^]] and [[PO4^3−^]]']],s:[['Balance','three [[NH4^+^]] (+3) balance one [[PO4^3−^]] (−3); brackets around the ammonium']],a:'[[(NH4)3PO4]]'}},
+
+{c:8,t:'L',h:'Sharing electrons',b:`<div class="def">A <b>covalent bond</b> is a shared pair of electrons between two non-metal atoms.</div>
+<ul><li>Electrons in the overlap count towards both atoms. H ends with 2; every other atom ends with 8.</li><li>Pairs that are not shared are <b>lone pairs</b>.</li><li>Two shared pairs make a <b>double bond</b> (O=O). Three make a <b>triple bond</b> (N≡N).</li></ul>
+<table><tr><th>Molecule</th><th>Bonds</th></tr><tr><td>[[H2]], [[HCl]], [[H2O]], [[CH4]]</td><td>single</td></tr><tr><td>[[O2]], [[CO2]], [[C2H4]]</td><td>contain double bonds</td></tr><tr><td>[[N2]]</td><td>triple</td></tr></table>`},
+{c:8,t:'L',h:'Ionic, simple molecular and giant covalent',b:`<table><tr><th></th><th>Ionic (NaCl)</th><th>Simple molecular ([[H2O]], [[CH4]])</th><th>Giant covalent (diamond, [[SiO2]])</th></tr>
+<tr><th>Particles</th><td>ions</td><td>small molecules</td><td>atoms in a network</td></tr>
+<tr><th>Melting point</th><td>high (801 °C)</td><td>low (−182 °C)</td><td>very high (about 1700 °C)</td></tr>
+<tr><th>Conducts?</th><td>only molten or dissolved</td><td>no</td><td>no (except graphite)</td></tr></table>
+<p>Simple molecules have strong bonds inside but <b>weak forces between molecules</b>. Diamond: each C bonds to 4 (very hard). Graphite: layers that slide, with one free electron per atom, so it conducts.</p>`},
+{c:8,t:'W',q:'Describe the bonding in carbon dioxide, [[CO2]].',
+ g:[['Given','C has 4 outer electrons; O has 6']],s:[['Bonds','C shares two pairs with each O: two double bonds, O=C=O'],['Count','C: 4 shared pairs = 8; each O: 2 shared pairs + 2 lone pairs = 8']],a:'Two C=O double bonds; each oxygen has 2 lone pairs'},
+{c:8,t:'Q',mc:[
+ ['A covalent bond is…',['a transfer of electrons','a shared pair of electrons','an attraction between ions','a sea of electrons'],1,'Both nuclei attract the shared pair.'],
+ ['A nitrogen molecule, [[N2]], has a…',['single bond','double bond','triple bond','ionic bond'],2,'Each N needs 3 more electrons, so they share 3 pairs.'],
+ ['Why does methane have a very low boiling point?',['Its covalent bonds are weak','The forces between molecules are weak','It is ionic','It is a giant structure'],1,'Boiling separates molecules; it does not break covalent bonds.'],
+ ['Why does graphite conduct electricity?',['Its ions can move','Each carbon has one free electron','Its layers slide','It is a metal'],1,'Each carbon bonds to only 3 others, leaving one electron free to move.']],
+ p:{q:'Describe the bonding in ammonia, [[NH3]].',g:[['Given','N is 2, 5 (5 outer electrons); H has 1']],s:[['Solution','N shares one pair with each of 3 H atoms. N now has 3 shared pairs + 1 lone pair = 8; each H has 2']],a:'3 single N–H bonds and 1 lone pair on nitrogen'}},
+
+/* ---------- Unit 3 ---------- */
+{u:3},
+{c:9,t:'L',h:'Balancing equations',b:`<div class="def">No atoms are created or destroyed: total mass of products = total mass of reactants (<b>conservation of mass</b>).</div>
+<ol><li>Write the correct formula for everything. Never change a formula: [[H2O]] stays [[H2O]].</li><li>Count atoms on each side.</li><li>Put numbers in front (coefficients). Leave H, O and lone elements until last.</li><li>Count again to check.</li></ol>
+<p>State symbols: <b>(s)</b> solid, <b>(l)</b> liquid, <b>(g)</b> gas, <b>(aq)</b> dissolved in water.</p>
+<div class="big sm">[[2Mg(s)]] + [[O2(g)]] → [[2MgO(s)]]</div>`},
+{c:9,t:'W',q:'Many kitchens in El Nido cook with LPG, which contains propane. Balance: [[C3H8]] + [[O2]] → [[CO2]] + [[H2O]]',
+ g:[['Carbon','3 C on the left, so [[3CO2]]'],['Hydrogen','8 H on the left, so [[4H2O]]']],s:[['Oxygen','right side: (3 × 2) + (4 × 1) = 10 O, so [[5O2]]']],a:'[[C3H8(g)]] + [[5O2(g)]] → [[3CO2(g)]] + [[4H2O(l)]]'},
+{c:9,t:'Q',mc:[
+ ['Balance [[Mg]] + [[O2]] → [[MgO]]. What number goes in front of [[MgO]]?',['1','2','3','4'],1,'[[2Mg]] + [[O2]] → [[2MgO]]'],
+ ['What does (aq) mean?',['acid','gas','dissolved in water','solid'],2,'Aqueous means dissolved in water.'],
+ ['Which of these is NOT allowed when balancing?',['Writing a coefficient','Changing a small number in a formula','Counting atoms','Checking again'],1,'Changing a subscript makes a different substance.'],
+ ['Which equation is balanced?',['[[N2]] + [[H2]] → [[2NH3]]','[[N2]] + [[3H2]] → [[2NH3]]','[[N2]] + [[3H2]] → [[NH3]]','[[2N2]] + [[3H2]] → [[2NH3]]'],1,'2 N and 6 H on each side.']],
+ p:{q:'Luke burns aluminium powder in a demo. Balance: [[Al]] + [[O2]] → [[Al2O3]]',g:[['Count','Left: 1 Al, 2 O. Right: 2 Al, 3 O']],s:[['Oxygen','lowest number with both 2 and 3 is 6: [[3O2]] and [[2Al2O3]]'],['Aluminium','right now has 4 Al, so [[4Al]]']],a:'[[4Al]] + [[3O2]] → [[2Al2O3]]'}},
+
+{c:10,t:'L',h:'Acids, alkalis and pH',b:`<div class="two"><div>
+<div class="def">An <b>acid</b> releases [[H^+^]] ions in water. A <b>base</b> neutralises an acid. An <b>alkali</b> is a soluble base that releases [[OH^−^]] ions.</div>
+<p>pH below 7 is acidic, 7 is neutral, above 7 is alkaline. Each step of 1 is a <b>tenfold</b> change in [[H^+^]].</p>
+<p class="note">Make your own indicator: crush red gumamela petals in warm water. It turns red in calamansi juice and green-yellow in baking soda solution.</p></div>
+<div>${PH_WIDGET}</div></div>`},
+{c:10,t:'L',h:'Strong, weak and neutralisation',b:`<div class="two"><div><h4>Strong acid</h4><p>Ionises completely.<br>[[HCl(aq)]] → [[H^+^(aq)]] + [[Cl^−^(aq)]]</p></div><div><h4>Weak acid</h4><p>Only partly ionises.<br>[[CH3COOH]] ⇌ [[H^+^]] + [[CH3COO^−^]]</p></div></div>
+<p>Strong is not the same as concentrated. <b>Strength</b> is how much it ionises; <b>concentration</b> is how much is dissolved.</p>
+<table><tr><th>Indicator</th><th>Acid</th><th>Alkali</th></tr><tr><td>Litmus</td><td>red</td><td>blue</td></tr><tr><td>Methyl orange</td><td>red</td><td>yellow</td></tr><tr><td>Phenolphthalein</td><td>colourless</td><td>pink</td></tr></table>
+<div class="big sm">acid + alkali → salt + water &nbsp; | &nbsp; [[H^+^(aq)]] + [[OH^−^(aq)]] → [[H2O(l)]]</div>`},
+{c:10,t:'W',q:'Sophia measures calamansi juice at pH 2 and vinegar at pH 3. How many times more [[H^+^]] ions does the calamansi juice have?',
+ g:[['Given','pH 2 and pH 3, a difference of 1'],['Rule','each step of 1 pH is ×10']],s:[['Solution','10<sup>1</sup> = 10']],a:'10 times more [[H^+^]] ions'},
+{c:10,t:'Q',mc:[
+ ['Acids release which ion in water?',['[[OH^−^]]','[[H^+^]]','[[Na^+^]]','[[Cl^−^]]'],1,'That is the definition of an acid.'],
+ ['What colour is phenolphthalein in an alkali?',['red','colourless','blue','pink'],3,'It is colourless in acid and neutral solutions.'],
+ ['A pH 4 solution has how many times more [[H^+^]] than pH 6?',['2','20','100','1000'],2,'Two steps: 10 × 10 = 100'],
+ ['Ethanoic acid is a weak acid because…',['it is dilute','it only partly ionises','it has a high pH','it is organic'],1,'Strength is about ionisation, not concentration.']],
+ p:{q:'William\'s antacid tablet contains magnesium hydroxide, [[Mg(OH)2]]. Stomach acid is [[HCl]]. Write the word equation and the balanced symbol equation.',g:[['Type','acid + base → salt + water'],['Salt','hydrochloric acid makes a chloride: [[MgCl2]]']],s:[['Word','magnesium hydroxide + hydrochloric acid → magnesium chloride + water'],['Balance','2 OH need 2 H: [[2HCl]] and [[2H2O]]']],a:'[[Mg(OH)2]] + [[2HCl]] → [[MgCl2]] + [[2H2O]]'}},
+
+{c:11,t:'L',h:'Three reactions of acids',b:`<table><tr><th>Reaction</th><th>Example</th><th>You see</th></tr>
+<tr><td>acid + metal → salt + hydrogen</td><td>[[Mg]] + [[2HCl]] → [[MgCl2]] + [[H2]]</td><td>fizzing, metal shrinks</td></tr>
+<tr><td>acid + base → salt + water</td><td>[[CuO]] + [[H2SO4]] → [[CuSO4]] + [[H2O]]</td><td>black solid dissolves, blue solution</td></tr>
+<tr><td>acid + carbonate → salt + water + carbon dioxide</td><td>[[CaCO3]] + [[2HCl]] → [[CaCl2]] + [[H2O]] + [[CO2]]</td><td>fizzing, solid dissolves</td></tr></table>
+<p>Hydrochloric acid makes <b>chlorides</b>, sulfuric acid makes <b>sulfates</b>, nitric acid makes <b>nitrates</b>. Copper, silver and gold do not react with dilute acids.</p>`},
+{c:11,t:'L',h:'Testing the gases',b:`<div class="two"><div class="def"><b>Hydrogen</b><br>Hold a lighted splint at the mouth of the tube. It burns with a <b>squeaky pop</b>.</div>
+<div class="def"><b>Carbon dioxide</b><br>Bubble it through limewater. Limewater turns <b>milky</b>.</div></div>
+<p class="note">El Nido's karst cliffs are limestone, [[CaCO3]], so they fizz with acid. Rainwater is slightly acidic from dissolved [[CO2]]; over thousands of years it dissolved the rock to form caves, sinkholes and sharp pinnacles.</p>`},
+{c:11,t:'W',q:'Sophia adds zinc to dilute sulfuric acid. Write the word equation and the balanced symbol equation.',
+ g:[['Type','acid + metal → salt + hydrogen'],['Salt','sulfuric acid makes a sulfate: [[ZnSO4]]']],s:[['Word','zinc + sulfuric acid → zinc sulfate + hydrogen']],a:'[[Zn(s)]] + [[H2SO4(aq)]] → [[ZnSO4(aq)]] + [[H2(g)]]'},
+{c:11,t:'Q',mc:[
+ ['Acid + carbonate gives…',['salt + hydrogen','salt + water','salt + water + carbon dioxide','metal oxide'],2,'The fizzing is carbon dioxide.'],
+ ['Nitric acid makes salts called…',['chlorides','nitrides','sulfates','nitrates'],3,'For example potassium nitrate, [[KNO3]].'],
+ ['What is the test for hydrogen?',['Limewater turns milky','A lighted splint gives a squeaky pop','A glowing splint relights','Litmus is bleached'],1,'Hydrogen burns quickly with a pop.'],
+ ['Which metal does NOT react with dilute hydrochloric acid?',['Magnesium','Zinc','Copper','Iron'],2,'Copper is less reactive than hydrogen.']],
+ p:{q:'Cas drops dilute hydrochloric acid on a piece of El Nido limestone. Write the balanced equation and say how to prove the gas is carbon dioxide.',g:[['Type','acid + carbonate → salt + water + carbon dioxide'],['Salt','calcium chloride, [[CaCl2]]']],s:[['Balance','[[CaCl2]] has 2 Cl, so [[2HCl]]'],['Test','bubble the gas through limewater']],a:'[[CaCO3]] + [[2HCl]] → [[CaCl2]] + [[H2O]] + [[CO2]]; limewater turns milky'}},
+
+{c:12,t:'L',h:'Solubility rules',b:`<table><tr><th>Compounds</th><th>Soluble?</th></tr>
+<tr><td>Sodium, potassium and ammonium salts</td><td>all soluble</td></tr><tr><td>Nitrates</td><td>all soluble</td></tr>
+<tr><td>Chlorides</td><td>soluble, except silver and lead(II) chloride</td></tr><tr><td>Sulfates</td><td>soluble, except barium and lead(II) sulfate</td></tr>
+<tr><td>Carbonates</td><td>insoluble, except sodium, potassium, ammonium</td></tr><tr><td>Hydroxides</td><td>insoluble, except sodium, potassium, ammonium</td></tr></table>
+<p>Solubility decides which method you use to make a salt.</p>`},
+{c:12,t:'L',h:'Three ways to make a salt',b:`<div class="three">
+<div class="def"><b>A. Excess solid + acid</b><br>Soluble salt from an insoluble base, metal or carbonate. Add solid until no more dissolves, filter off the excess, heat to half volume, cool to crystallise.</div>
+<div class="def"><b>B. Titration</b><br>Soluble salt from an alkali and an acid. Find the exact volume with an indicator, repeat without it, then crystallise.</div>
+<div class="def"><b>C. Precipitation</b><br>Insoluble salt. Mix two solutions, filter, wash and dry the precipitate.</div></div>
+<div class="big sm">[[BaCl2(aq)]] + [[Na2SO4(aq)]] → [[BaSO4(s)]] + [[2NaCl(aq)]]</div>`},
+{c:12,t:'W',q:'Olive wants to make silver chloride. Which method should she use, and what could she mix?',
+ g:[['Check','chlorides are soluble except silver and lead(II): AgCl is insoluble']],s:[['Method','C, precipitation'],['Solutions','silver nitrate (all nitrates soluble) + sodium chloride']],a:'[[AgNO3(aq)]] + [[NaCl(aq)]] → [[AgCl(s)]] + [[NaNO3(aq)]], then filter, wash and dry'},
+{c:12,t:'Q',mc:[
+ ['Which salt is insoluble?',['sodium chloride','potassium nitrate','barium sulfate','ammonium carbonate'],2,'Barium sulfate is one of the sulfate exceptions.'],
+ ['In method A, why is excess copper(II) oxide added?',['To make sure all the acid is used up','To turn the solution blue','To speed up filtering','To form a precipitate'],0,'The leftover solid is filtered off.'],
+ ['Best method to make sodium chloride from NaOH and HCl?',['Excess solid and filter','Titration','Precipitation','Electrolysis'],1,'Both are solutions, so extra alkali cannot be filtered out.'],
+ ['All nitrates are…',['insoluble','acidic','soluble','coloured'],2,'This is one of the solubility rules.']],
+ p:{q:'Rock needs zinc chloride crystals and has zinc oxide powder. Choose the method and write the equation.',g:[['Check','zinc oxide is an insoluble base; zinc chloride is soluble']],s:[['Method','A: add excess ZnO to warm dilute HCl, filter, evaporate to half, cool to crystallise'],['Balance','[[ZnCl2]] has 2 Cl, so [[2HCl]]']],a:'[[ZnO]] + [[2HCl]] → [[ZnCl2]] + [[H2O]]'}},
+
+{c:13,t:'L',h:'Exothermic and endothermic',b:`<div class="two"><div>
+<div class="def"><b>Exothermic</b>: releases heat, surroundings get hotter, ΔH negative. Combustion, neutralisation, respiration.</div>
+<div class="def"><b>Endothermic</b>: takes in heat, surroundings get colder, ΔH positive. Photosynthesis, heating limestone, instant cold packs.</div>
+<p>The hump is the <b>activation energy, Ea</b>: the minimum energy colliding particles need. That is why an LPG stove needs a spark.</p></div>
+<div class="fig">${ENERGY_SVG}</div></div>`},
+{c:13,t:'L',h:'Bond energies',b:`<div class="def">Breaking bonds <b>takes in</b> energy. Making bonds <b>releases</b> energy.</div>
+<div class="big">ΔH = energy to break bonds − energy released making bonds</div>
+<table><tr><th>Bond</th><td>H–H</td><td>Cl–Cl</td><td>H–Cl</td><td>C–H</td><td>O=O</td><td>C=O</td><td>O–H</td></tr><tr><th>kJ/mol</th><td>436</td><td>242</td><td>431</td><td>413</td><td>498</td><td>805</td><td>464</td></tr></table>`},
+{c:13,t:'W',q:'Calculate ΔH for [[H2]] + [[Cl2]] → [[2HCl]].',
+ g:[['Broken','1 H–H + 1 Cl–Cl = 436 + 242 = 678 kJ'],['Made','2 H–Cl = 2 × 431 = 862 kJ'],['Formula','ΔH = broken − made']],s:[['Solution','678 − 862']],a:'ΔH = −184 kJ/mol, so the reaction is exothermic'},
+{c:13,t:'Q',mc:[
+ ['In an exothermic reaction, the temperature of the surroundings…',['falls','stays the same','rises','drops to zero'],2,'Heat is released to the surroundings.'],
+ ['Which of these is endothermic?',['Burning LPG','Neutralisation','Respiration','Photosynthesis'],3,'Plants take in light energy.'],
+ ['Breaking bonds…',['releases energy','takes in energy','has no energy change','makes products'],1,'Energy is needed to pull atoms apart.'],
+ ['Activation energy is…',['the energy given out','the minimum energy colliding particles need to react','the same as ΔH','the energy of the products'],1,'It is the hump on the pathway diagram.']],
+ p:{q:'Luke reads about hydrogen fuel. Calculate ΔH for [[2H2]] + [[O2]] → [[2H2O]] using the bond energy table.',g:[['Broken','2 H–H + 1 O=O = (2 × 436) + 498 = 1370 kJ'],['Made','4 O–H = 4 × 464 = 1856 kJ']],s:[['Solution','ΔH = 1370 − 1856']],a:'ΔH = −486 kJ/mol, exothermic'}},
+
+/* ---------- Unit 4 ---------- */
+{u:4},
+{c:14,t:'L',h:'The alkali metals',b:`<div class="two"><div><ul><li>Soft enough to cut with a knife; shiny, then tarnish quickly.</li><li>Stored under oil.</li><li>Low density: Li, Na and K float.</li><li>Melting point falls down the group.</li></ul>
+<div class="big sm">metal + water → metal hydroxide + hydrogen</div></div>
+<table><tr><th>Metal</th><th>With water</th></tr><tr><td>Lithium</td><td>floats, fizzes steadily</td></tr><tr><td>Sodium</td><td>melts into a ball, whizzes around</td></tr><tr><td>Potassium</td><td>whizzes, hydrogen burns with a lilac flame</td></tr><tr><td>Rb, Cs</td><td>explosive</td></tr></table></div>
+<p class="note">The solution left is alkaline and turns universal indicator purple. Only the teacher demonstrates these, behind a safety screen.</p>`},
+{c:14,t:'L',h:'Why reactivity increases down the group',b:`<p>Every group 1 atom loses its <b>one outer electron</b> to form a +1 ion. Going down the group:</p>
+<ol><li>atoms have more shells, so the outer electron is further from the nucleus;</li><li>more inner shells shield it from the nucleus;</li><li>the attraction is weaker;</li><li>so the electron is lost more easily, and the metal is more reactive.</li></ol>
+<p>Flame colours: lithium red, sodium yellow-orange, potassium lilac. Lithium batteries power phones, laptops and drones.</p>`},
+{c:14,t:'W',q:'Write the balanced equation for potassium reacting with water.',
+ g:[['Pattern','metal + water → metal hydroxide + hydrogen'],['Formulae','K forms [[K^+^]], so potassium hydroxide is [[KOH]]']],s:[['Balance','[[H2]] needs 2 H atoms from water, so use [[2H2O]], [[2KOH]], [[2K]]']],a:'[[2K(s)]] + [[2H2O(l)]] → [[2KOH(aq)]] + [[H2(g)]]'},
+{c:14,t:'Q',mc:[
+ ['Alkali metals are stored under oil because they…',['are very heavy','react with air and water','are magnetic','melt easily'],1,'Oil keeps air and moisture away.'],
+ ['Going down group 1, reactivity…',['decreases','stays the same','increases','increases then decreases'],2,'The outer electron is lost more easily.'],
+ ['What colour flame does potassium give?',['red','yellow-orange','green','lilac'],3,'Lithium is red and sodium yellow-orange.'],
+ ['After sodium reacts with water, universal indicator turns…',['red','green','purple','orange'],2,'Sodium hydroxide is a strong alkali.']],
+ p:{q:'Predict caesium\'s melting point compared with potassium (63 °C), how it reacts with water, and its equation.',g:[['Trend','melting point falls and reactivity rises down group 1']],s:[['Predict','melting point below 63 °C; reacts explosively'],['Equation','same pattern as sodium and potassium']],a:'Below 63 °C (actually 28 °C); explosive; [[2Cs]] + [[2H2O]] → [[2CsOH]] + [[H2]]'}},
+
+/* ---------- Unit 5 ---------- */
+{u:5},
+{c:15,t:'L',h:'Splitting compounds with electricity',b:`<div class="two"><div>
+<div class="def"><b>Electrolysis</b> breaks down an ionic compound, molten or dissolved, using an electric current. The liquid is the <b>electrolyte</b>; the rods are <b>electrodes</b>.</div>
+<ul><li>Cations go to the <b>cathode (−)</b> and gain electrons: <b>reduction</b>.</li><li>Anions go to the <b>anode (+)</b> and lose electrons: <b>oxidation</b>.</li></ul>
+<p><b>OIL RIG</b>: oxidation is loss, reduction is gain.</p></div><div class="fig">${CELL_SVG}</div></div>`},
+{c:15,t:'L',h:'Molten and aqueous electrolytes',b:`<p>Molten lead(II) bromide: cathode [[Pb^2+^]] + [[2e^−^]] → [[Pb]]; anode [[2Br^−^]] → [[Br2]] + [[2e^−^]]</p>
+<table><tr><th>Electrolyte</th><th>Cathode</th><th>Anode</th><th>Left in solution</th></tr>
+<tr><td>Concentrated NaCl (brine)</td><td>hydrogen</td><td>chlorine</td><td>sodium hydroxide</td></tr>
+<tr><td>[[CuSO4]] (graphite)</td><td>copper</td><td>oxygen</td><td>sulfuric acid</td></tr>
+<tr><td>Dilute [[H2SO4]]</td><td>hydrogen</td><td>oxygen</td><td>sulfuric acid</td></tr></table>
+<p>In water: hydrogen forms at the cathode unless the metal is less reactive than hydrogen; oxygen forms at the anode unless there is a concentrated halide.</p>
+<p class="note">Electroplating: the object is the cathode, the plating metal is the anode, and the electrolyte holds ions of the plating metal.</p>`},
+{c:15,t:'W',q:'Copper(II) sulfate solution is electrolysed with graphite electrodes. What forms at each electrode?',
+ g:[['Ions','[[Cu^2+^]], [[H^+^]], [[SO4^2−^]], [[OH^−^]]']],s:[['Cathode','copper is less reactive than hydrogen, so copper forms: [[Cu^2+^]] + [[2e^−^]] → [[Cu]]'],['Anode','no halide, so oxygen forms']],a:'Copper coats the cathode; oxygen bubbles at the anode'},
+{c:15,t:'Q',mc:[
+ ['Positive ions move to the…',['anode','cathode','electrolyte','beaker'],1,'Opposite charges attract: the cathode is negative.'],
+ ['Oxidation is…',['gain of electrons','loss of electrons','gain of protons','loss of neutrons'],1,'OIL RIG.'],
+ ['Concentrated brine gives what at the anode?',['hydrogen','oxygen','sodium','chlorine'],3,'A concentrated halide gives the halogen.'],
+ ['In electroplating, the object being plated is the…',['anode','electrolyte','cathode','power supply'],2,'Metal ions gain electrons and coat the cathode.']],
+ p:{q:'Molten zinc chloride, [[ZnCl2]], is electrolysed. Name the products and write both half-equations.',g:[['Ions','[[Zn^2+^]] and [[Cl^−^]]; molten, so no water']],s:[['Cathode','[[Zn^2+^]] + [[2e^−^]] → [[Zn]]'],['Anode','[[2Cl^−^]] → [[Cl2]] + [[2e^−^]]']],a:'Zinc at the cathode, chlorine gas at the anode'}},
+
+/* ---------- Unit 6 ---------- */
+{u:6},
+{c:16,t:'L',h:'Families of hydrocarbons',b:`<div class="def"><b>Hydrocarbons</b> contain hydrogen and carbon only. A <b>homologous series</b> has the same general formula; each member differs by [[CH2]].</div>
+<table><tr><th>Series</th><th>General formula</th><th>Bond</th><th>First members</th></tr>
+<tr><td>Alkanes</td><td>C<sub>n</sub>H<sub>2n+2</sub></td><td>only C–C (saturated)</td><td>methane [[CH4]], ethane [[C2H6]], propane [[C3H8]]</td></tr>
+<tr><td>Alkenes</td><td>C<sub>n</sub>H<sub>2n</sub></td><td>one C=C</td><td>ethene [[C2H4]], propene [[C3H6]]</td></tr>
+<tr><td>Alkynes</td><td>C<sub>n</sub>H<sub>2n−2</sub></td><td>one C≡C</td><td>ethyne [[C2H2]], propyne [[C3H4]]</td></tr></table>
+<p>Prefixes: meth 1, eth 2, prop 3, but 4, pent 5, hex 6. There is no methene: a double bond needs two carbons.</p>`},
+{c:16,t:'L',h:'Properties and the bromine water test',b:`<ul><li>Boiling point rises as the chain gets longer. C1 to C4 are gases, which is why propane and butane are sold as LPG.</li><li>Alkanes are fairly unreactive apart from burning. Alkenes and alkynes are reactive because the multiple bond can open up.</li></ul>
+<div class="two"><div class="def"><b>Alkene or alkyne</b><br>orange bromine water turns <b>colourless</b></div><div class="def"><b>Alkane</b><br>bromine water <b>stays orange</b></div></div>
+<div class="big sm">[[C2H4]] + [[Br2]] → [[C2H4Br2]]</div>`},
+{c:16,t:'W',q:'Rock finds the formula [[C5H10]] on a lab bottle. Which series is it in, and what is its name?',
+ g:[['Given','n = 5, H = 10'],['Test','2n = 10, which fits C<sub>n</sub>H<sub>2n</sub>']],s:[['Series','alkene'],['Name','5 carbons = pent, alkene = -ene']],a:'An alkene: pentene'},
+{c:16,t:'Q',mc:[
+ ['What is the general formula of the alkanes?',['C<sub>n</sub>H<sub>2n</sub>','C<sub>n</sub>H<sub>2n+2</sub>','C<sub>n</sub>H<sub>2n−2</sub>','C<sub>n</sub>H<sub>n</sub>'],1,'For example propane, [[C3H8]].'],
+ ['Ethene is shaken with bromine water. The colour changes from…',['orange to colourless','colourless to orange','orange to purple','it stays orange'],0,'Bromine adds across the double bond.'],
+ ['What is the name of [[C3H4]], which has one triple bond?',['propane','propene','butyne','propyne'],3,'3 carbons and a triple bond.'],
+ ['Why is there no "methene"?',['Methane is too stable','A double bond needs at least two carbon atoms','It is a gas','It has no hydrogen'],1,'Methane has only one carbon.']],
+ p:{q:'Sophia needs the alkene with 6 carbon atoms. Give its name, its formula and its result with bromine water.',g:[['Given','n = 6, alkene: C<sub>n</sub>H<sub>2n</sub>']],s:[['Solution','H = 2 × 6 = 12; hex + ene']],a:'Hexene, [[C6H12]]; turns bromine water from orange to colourless'}},
+
+{c:17,t:'L',h:'Complete and incomplete combustion',b:`<div class="two"><div><h4>Complete (plenty of oxygen)</h4><p>Clean <b>blue</b> flame.<br>alkane + oxygen → carbon dioxide + water<br>[[CH4]] + [[2O2]] → [[CO2]] + [[2H2O]]</p></div>
+<div><h4>Incomplete (not enough oxygen)</h4><p><b>Yellow, smoky</b> flame. Less energy released.<br>[[2CH4]] + [[3O2]] → [[2CO]] + [[4H2O]]<br>[[CH4]] + [[O2]] → [[C]] + [[2H2O]]</p></div></div>
+<div class="def"><b>Carbon monoxide</b> is colourless, odourless and toxic. It binds to haemoglobin so blood carries less oxygen. Never run a generator indoors during a brownout.</div>`},
+{c:17,t:'L',h:'Pollutants from fuels',b:`<table><tr><th>Pollutant</th><th>From</th><th>Effect</th></tr>
+<tr><td>[[CO2]]</td><td>any carbon fuel</td><td>climate change, ocean acidification</td></tr><tr><td>[[CO]]</td><td>incomplete combustion</td><td>toxic</td></tr>
+<tr><td>soot</td><td>incomplete combustion, diesel</td><td>breathing problems</td></tr><tr><td>[[SO2]]</td><td>sulfur impurities in fuel</td><td>acid rain</td></tr><tr><td>[[NO]]<sub>x</sub></td><td>nitrogen and oxygen in hot engines</td><td>acid rain, smog</td></tr></table>
+<p>Testing the products: water turns anhydrous copper(II) sulfate from white to blue; carbon dioxide turns limewater milky.</p>`},
+{c:17,t:'W',q:'Balance the complete combustion of pentane, [[C5H12]].',
+ g:[['Carbon','5 C, so [[5CO2]]'],['Hydrogen','12 H, so [[6H2O]]']],s:[['Oxygen','(5 × 2) + 6 = 16 O, so [[8O2]]']],a:'[[C5H12]] + [[8O2]] → [[5CO2]] + [[6H2O]]'},
+{c:17,t:'Q',mc:[
+ ['The products of complete combustion of an alkane are…',['carbon monoxide and soot','carbon dioxide only','carbon dioxide and water','hydrogen and oxygen'],2,'Plenty of oxygen fully oxidises the carbon.'],
+ ['A yellow, smoky flame on a gas stove shows…',['incomplete combustion','complete combustion','too much oxygen','hydrogen burning'],0,'The air holes may need cleaning.'],
+ ['Carbon monoxide is dangerous because it…',['causes acid rain','binds to haemoglobin','smells strongly','is a liquid'],1,'Blood can then carry less oxygen.'],
+ ['Sulfur dioxide in exhaust comes from…',['nitrogen in the air','soot','sulfur impurities in the fuel','water vapour'],2,'Low-sulfur fuels reduce it.']],
+ p:{q:'Balance the complete combustion of ethane, [[C2H6]].',g:[['Carbon','2 C, so [[2CO2]]'],['Hydrogen','6 H, so [[3H2O]]']],s:[['Oxygen','4 + 3 = 7 O, which is 3½ [[O2]]'],['Double','multiply everything by 2 to remove the half']],a:'[[2C2H6]] + [[7O2]] → [[4CO2]] + [[6H2O]]'}},
+
+{c:18,t:'L',h:'Crude oil',b:`<p>Crude oil formed over millions of years from tiny sea plants and animals buried in mud, changed by heat and pressure. It is <b>finite</b> and <b>non-renewable</b>.</p>
+<div class="def">Crude oil is a <b>mixture</b> of hydrocarbons, mostly alkanes, from 1 to over 40 carbons. It is separated into <b>fractions</b>: mixtures with similar chain lengths and boiling points.</div>
+<p class="note">The Malampaya gas field off northwest Palawan pipes natural gas about 500 km to power plants in Batangas.</p>`},
+{c:18,t:'L',h:'Fractional distillation',b:`<p>Crude oil is heated to about 350 °C and the vapour rises up a column that is hot at the bottom and cool at the top. Each hydrocarbon condenses where the column is cooler than its boiling point.</p>${COLUMN_WIDGET}
+<p class="note">Going down: longer chains, higher boiling point, more viscous, less volatile, harder to ignite, darker.</p>`},
+{c:18,t:'W',q:'Luke compares petrol (C5 to C10) for tricycles with diesel (C14 to C20) for his family\'s banca. Which condenses higher in the column, and which is more viscous?',
+ g:[['Given','petrol has shorter chains than diesel']],s:[['Boiling point','shorter chains have lower boiling points, so petrol rises higher before condensing'],['Viscosity','longer chains are thicker']],a:'Petrol condenses higher up; diesel is more viscous'},
+{c:18,t:'Q',mc:[
+ ['Crude oil is non-renewable because…',['it is a liquid','it takes millions of years to form','it is a mixture','it burns'],1,'We use it far faster than it forms.'],
+ ['The top of the fractionating column is…',['the hottest part','where bitumen collects','the coolest part','full of liquid'],2,'Short chains with low boiling points reach the top.'],
+ ['Fractions collected near the bottom are…',['more volatile','short-chain','easier to ignite','more viscous'],3,'Long chains flow less easily.'],
+ ['A fraction is…',['a pure compound','an element','a mixture of hydrocarbons with similar boiling points','a polymer'],2,'It is not a single substance.']],
+ p:{q:'Fraction X has chains of about C30; fraction Y about C8. Compare their boiling points, flammability and where they collect.',g:[['Given','X long chain, Y short chain']],s:[['Trend','longer chains: higher boiling point, harder to ignite, collect lower down']],a:'X: higher boiling point, harder to ignite, collects near the bottom. Y: lower boiling point, ignites easily, collects near the top'}},
+
+{c:19,t:'L',h:'Cracking',b:`<p>Distillation gives too many long chains and not enough short ones like petrol.</p>
+<div class="def"><b>Cracking</b> is thermal decomposition that breaks long-chain alkanes into <b>shorter alkanes</b> (fuels) and <b>alkenes</b> (for plastics).</div>
+<div class="big sm">[[C10H22]] → [[C8H18]] + [[C2H4]]</div>
+<table><tr><th>Catalytic cracking</th><td>about 500 °C, zeolite or aluminium oxide catalyst</td></tr><tr><th>Steam cracking</th><td>about 800 to 900 °C with steam, no catalyst</td></tr></table>
+<p class="note">In the lab, the gas made turns bromine water colourless. Lift the delivery tube out of the water before you stop heating to prevent suck-back.</p>`},
+{c:19,t:'W',q:'Dodecane, [[C12H26]], cracks into one ethene molecule and one other product. Find the other product and its series.',
+ g:[['Given','[[C12H26]] → ? + [[C2H4]]']],s:[['Carbon','12 − 2 = 10'],['Hydrogen','26 − 4 = 22']],a:'[[C10H22]] (decane), which fits C<sub>n</sub>H<sub>2n+2</sub>, so it is an alkane'},
+{c:19,t:'Q',mc:[
+ ['Cracking produces…',['only alkanes','polymers','shorter alkanes and alkenes','carbon dioxide'],2,'The alkanes are fuels; the alkenes make plastics.'],
+ ['The catalyst in catalytic cracking is…',['iron','zeolite or aluminium oxide','platinum','copper'],1,'It works at about 500 °C.'],
+ ['Why is cracking needed?',['To make crude oil','To remove sulfur','Demand for short chains is greater than supply','To make longer chains'],2,'Petrol is in high demand.'],
+ ['The gas from cracking turns bromine water…',['milky','orange','blue','colourless'],3,'Cracking makes alkenes.']],
+ p:{q:'Hexadecane, [[C16H34]], is cracked into octane, [[C8H18]], and one other product. Find it and name its series.',g:[['Given','[[C16H34]] → [[C8H18]] + ?']],s:[['Carbon','16 − 8 = 8'],['Hydrogen','34 − 18 = 16']],a:'[[C8H16]], which fits C<sub>n</sub>H<sub>2n</sub>: an alkene (octene)'}},
+
+{c:20,t:'L',h:'Polymers',b:`<div class="def">A <b>polymer</b> is a long chain of thousands of small <b>monomers</b>. In <b>addition polymerisation</b>, the C=C bond of an alkene opens and the monomers join. Nothing else is made.</div>
+<div class="big sm">n CH<sub>2</sub>=CH<sub>2</sub> → [–CH<sub>2</sub>–CH<sub>2</sub>–]<sub>n</sub></div>
+<table><tr><th>Monomer</th><th>Polymer</th><th>Uses</th></tr><tr><td>ethene</td><td>poly(ethene)</td><td>bags, sachets, bottles</td></tr><tr><td>propene</td><td>poly(propene)</td><td>ropes, crates, fishing nets</td></tr><tr><td>chloroethene</td><td>PVC</td><td>water pipes</td></tr><tr><td>tetrafluoroethene</td><td>PTFE</td><td>non-stick pans</td></tr></table>`},
+{c:20,t:'L',h:'Condensation polymers and plastic waste',b:`<table><tr><th></th><th>Addition</th><th>Condensation</th></tr><tr><th>Monomers</th><td>contain C=C</td><td>two reactive groups each</td></tr><tr><th>Products</th><td>polymer only</td><td>polymer + small molecule (water)</td></tr><tr><th>Examples</th><td>poly(ethene), PVC</td><td>nylon, PET, proteins, starch</td></tr></table>
+<p>Natural macromolecules: proteins (amino acids), starch and cellulose (glucose), DNA (nucleotides).</p>
+<div class="def">Most plastics are <b>non-biodegradable</b>. In the sea they break into microplastics eaten by fish, turtles and seabirds.</div>`},
+{c:20,t:'W',q:'Draw the repeat unit of poly(propene) from propene, CH<sub>2</sub>=CHCH<sub>3</sub>.',
+ g:[['Monomer','two carbons joined by C=C; one carries a CH<sub>3</sub> group']],s:[['Open','turn C=C into C–C and keep every other group in place'],['Brackets','add a bond through each bracket and write n']],a:'[–CH<sub>2</sub>–CH(CH<sub>3</sub>)–]<sub>n</sub>'},
+{c:20,t:'Q',mc:[
+ ['What is the monomer of PVC?',['ethene','propene','chloroethene','tetrafluoroethene'],2,'Poly(chloroethene) is PVC.'],
+ ['Addition polymerisation produces…',['the polymer only','the polymer and water','the polymer and carbon dioxide','monomers'],0,'No small molecule is lost.'],
+ ['Which is a condensation polymer?',['poly(ethene)','PVC','PTFE','nylon'],3,'Water is released at each link.'],
+ ['What is the monomer of starch?',['amino acids','glucose','nucleotides','ethene'],1,'Rice and cassava store energy as starch.']],
+ p:{q:'The monomer CF<sub>2</sub>=CF<sub>2</sub> makes a polymer. Name the polymer, draw its repeat unit and give a use.',g:[['Monomer','tetrafluoroethene']],s:[['Repeat unit','open the C=C and keep both F atoms on each carbon']],a:'PTFE (Teflon), [–CF<sub>2</sub>–CF<sub>2</sub>–]<sub>n</sub>, used for non-stick pans'}}
+];
+
+</script>
+<script>
+(function(){
+const fx=s=>String(s)
+ .replace(/\{\{(\d+)\|(\d+)\|([A-Za-z]+)\}\}/g,(m,a,z,x)=>`<span class="iso"><span><sup>${a}</sup><sub>${z}</sub></span>${x}</span>`)
+ .replace(/\[\[(.+?)\]\]/g,(m,c)=>c.replace(/\^(.+?)\^/g,'<sup>$1</sup>').replace(/([A-Za-z\)])(\d+)/g,'$1<sub>$2</sub>'));
+const uc=u=>`style="--uc:var(--u${u})"`;
+const tile=(c,s)=>{const [sym]=CH[c];return `<div class="tile" ${uc(CH[c][2])}${s?` style="--uc:var(--u${CH[c][2]});--s:${s}"`:''}><small>${c}</small>${sym}</div>`};
+const head=(c,h,k)=>`<div class="head">${tile(c)}<div><div class="k">${k}</div><h2>${fx(h)}</h2></div></div>`;
+const rows=r=>r.map(([l,t])=>`<div class="row"><b>${l}</b><span>${fx(t)}</span></div>`).join('');
+const L='ABCD';
+
+function staged(id,g,s,a){
+ return `<div class="steps" data-staged="${id}">
+ <div class="stage-b" data-n="1">${rows(g)}</div><button class="reveal" data-next="1">Show given and formula</button>
+ <div class="stage-b" data-n="2">${rows(s)}</div><button class="reveal" data-next="2" hidden>Show solution</button>
+ <div class="stage-b" data-n="3"><div class="ans">${fx(a)}</div></div><button class="reveal" data-next="3" hidden>Show answer</button></div>`;
+}
+
+const slides=[];let qid=0;
+// title
+slides.push({u:1,lbl:'Chemistry 9–10',cls:'cover',html:`<div class="in" style="--uc:var(--u1)">
+<h1>Chemistry 9–10</h1><p class="lede">Lessons, worked examples and a practice test after every chapter. Tap any chapter to jump in.</p>
+<div class="grid20">${Object.keys(CH).map(c=>`<button data-jump="ch${c}" aria-label="Chapter ${c}: ${CH[c][1]}">${tile(c)}</button>`).join('')}</div>
+<p class="note">The Earth School El Nido. Use the arrow keys or swipe to move between slides.</p></div>`});
+
+let firstOf={};
+DECK.forEach(d=>{
+ if(d.u){slides.push({u:d.u,lbl:`Unit ${d.u}: ${UNITS[d.u]}`,cls:'unit',html:`<div class="in"><div class="num">${d.u}</div><h2>${UNITS[d.u]}</h2>
+ <div class="chips">${Object.keys(CH).filter(c=>CH[c][2]==d.u).map(c=>`<div class="chip">${tile(c)}${CH[c][1]}</div>`).join('')}</div></div>`});return}
+ const c=d.c,u=CH[c][2],name=CH[c][1];
+ if(!firstOf[c])firstOf[c]=slides.length;
+ const lbl=`Chapter ${c}: ${name}`;
+ if(d.t==='L'){slides.push({u,c,lbl,html:`<div class="in">${head(c,d.h,`Chapter ${c}: ${name}`)}<div>${fx(d.b)}</div></div>`})}
+ if(d.t==='W'){const id='w'+(qid++);slides.push({u,c,lbl,html:`<div class="in">${head(c,'Worked example',`Chapter ${c}: ${name}`)}
+ <div class="prob">${fx(d.q)}</div>${staged(id,d.g,d.s,d.a)}</div>`})}
+ if(d.t==='Q'){const id='q'+(qid++);const n=d.mc.length+1;
+  const nav=d.mc.map((q,i)=>`<button data-qi="${i}" aria-current="${i==0}"><span class="dot">${i+1}</span><span class="t">Question ${i+1}</span></button>`).join('')+`<button data-qi="${d.mc.length}" aria-current="false"><span class="dot">${n}</span><span class="t">Problem</span></button>`;
+  const qs=d.mc.map((q,i)=>`<div class="q${i==0?' show':''}" data-i="${i}"><span class="badge">Question ${i+1} of ${n}, multiple choice</span><div class="qt">${fx(q[0])}</div>
+   <div class="opts">${q[1].map((o,j)=>`<button class="opt" data-j="${j}"><span class="l">${L[j]}</span><span>${fx(o)}</span></button>`).join('')}</div>
+   <div class="fb" aria-live="polite"></div></div>`).join('');
+  const pr=`<div class="q" data-i="${d.mc.length}"><span class="badge">Question ${n} of ${n}, show your working first</span><div class="prob">${fx(d.p.q)}</div>${staged(id+'p',d.p.g,d.p.s,d.p.a)}</div>`;
+  slides.push({u,c,lbl:lbl+', practice test',quiz:d,html:`<div class="in">${head(c,'Practice test',`Chapter ${c}: ${name}`)}
+  <div class="qwrap" data-quiz="${id}"><div><div class="qnav">${nav}</div><div class="score">Score: <b class="sc">0</b> / ${d.mc.length}</div></div>
+  <div>${qs}${pr}<div class="qfoot" style="margin-top:.8rem"><button class="qprev" disabled>Previous question</button><button class="go qnext">Next question</button><button class="qreset">Try again</button></div></div></div></div>`});}
+});
+slides.push({u:6,lbl:'End',cls:'cover',html:`<div class="in" style="--uc:var(--u6)"><h1>Well done</h1><p class="lede">That is all 20 chapters. Go back to any practice test and press "Try again" to practise until every answer is green.</p>
+<div class="grid20">${Object.keys(CH).map(c=>`<button data-jump="ch${c}" aria-label="Chapter ${c}: ${CH[c][1]}">${tile(c)}</button>`).join('')}</div></div>`});
+
+// render
+const stage=document.getElementById('stage');
+stage.innerHTML=slides.map((s,i)=>`<section class="slide ${s.cls||''}" id="s${i}" style="--uc:var(--u${s.u})" aria-label="Slide ${i+1} of ${slides.length}">${s.html}</section>`).join('');
+
+// staged reveals
+stage.querySelectorAll('[data-staged]').forEach(st=>{
+ st.querySelectorAll('.reveal').forEach(b=>b.addEventListener('click',()=>{
+  const n=+b.dataset.next;st.querySelector(`.stage-b[data-n="${n}"]`).classList.add('show');b.hidden=true;
+  const nb=st.querySelector(`.reveal[data-next="${n+1}"]`);if(nb){nb.hidden=false;nb.focus()}}));
+});
+function resetStaged(st){st.querySelectorAll('.stage-b').forEach(x=>x.classList.remove('show'));st.querySelectorAll('.reveal').forEach(b=>b.hidden=b.dataset.next!=='1')}
+
+// quizzes
+stage.querySelectorAll('[data-quiz]').forEach((qw)=>{
+ const sec=qw.closest('.slide');const data=slides[+sec.id.slice(1)].quiz;
+ const qs=[...qw.querySelectorAll('.q')],navs=[...qw.querySelectorAll('.qnav button')];
+ const prev=qw.querySelector('.qprev'),next=qw.querySelector('.qnext'),sc=qw.querySelector('.sc');
+ let cur=0,score=0;
+ function show(i){cur=i;qs.forEach((q,k)=>q.classList.toggle('show',k==i));navs.forEach((b,k)=>b.setAttribute('aria-current',k==i));prev.disabled=i==0;next.disabled=i==qs.length-1}
+ navs.forEach((b,i)=>b.addEventListener('click',()=>show(i)));
+ prev.addEventListener('click',()=>show(cur-1));next.addEventListener('click',()=>show(cur+1));
+ data.mc.forEach((q,i)=>{const box=qs[i],fb=box.querySelector('.fb');
+  box.querySelectorAll('.opt').forEach(o=>o.addEventListener('click',()=>{
+   const j=+o.dataset.j,ok=j===q[2];
+   box.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(+x.dataset.j===q[2])x.classList.add('right')});
+   if(!ok)o.classList.add('wrong');
+   fb.className='fb show '+(ok?'good':'bad');
+   fb.innerHTML=`<b>${ok?'Correct.':'Not quite. The answer is '+L[q[2]]+'.'}</b> ${fx(q[3])}`;
+   navs[i].classList.add(ok?'ok':'no');if(ok){score++;sc.textContent=score}
+  }))});
+ qw.querySelector('.qreset').addEventListener('click',()=>{
+  score=0;sc.textContent=0;navs.forEach(b=>b.classList.remove('ok','no'));
+  qw.querySelectorAll('.opt').forEach(x=>{x.disabled=false;x.classList.remove('right','wrong')});
+  qw.querySelectorAll('.fb').forEach(f=>{f.className='fb';f.innerHTML=''});
+  qw.querySelectorAll('[data-staged]').forEach(resetStaged);show(0)});
+});
+
+// bohr diagrams
+stage.querySelectorAll('[data-bohr]').forEach(el=>{
+ const [s,z]=el.dataset.bohr.split(',');let r=+z;const sh=[];for(const c of [2,8,8,2]){if(r<=0)break;sh.push(Math.min(c,r));r-=c}
+ const R=[24,40,56,72];let h=`<circle r="13" fill="color-mix(in srgb,var(--uc) 25%,var(--card))" stroke="var(--uc)"/><text text-anchor="middle" dy="5" font-size="12" font-weight="700" fill="var(--ink)">${s}</text>`;
+ sh.forEach((n,i)=>{h+=`<circle r="${R[i]}" fill="none" stroke="var(--line)" stroke-width="1.5"/>`;for(let k=0;k<n;k++){const a=(k/n)*2*Math.PI-Math.PI/2+(i%2?.2:0);h+=`<circle cx="${(R[i]*Math.cos(a)).toFixed(1)}" cy="${(R[i]*Math.sin(a)).toFixed(1)}" r="4" fill="var(--uc)"/>`}});
+ const vb=R[sh.length-1]+10;el.innerHTML=`<svg viewBox="${-vb} ${-vb} ${2*vb} ${2*vb}" width="${vb*1.7}" role="img" aria-label="${s}: ${sh.join(', ')}">${h}</svg><div>${s}: ${sh.join(', ')}</div>`});
+
+// pH widget
+const PH=[['#E5383B','battery acid'],['#EF5B3A','stomach acid'],['#F37D3B','calamansi juice'],['#F7A23C','vinegar'],['#F9C43D','tomato juice'],['#F2DC4A','black coffee'],['#C9DB4F','rainwater'],['#7DC759','pure water'],['#4DB37A','seawater'],['#3AA3A0','baking soda solution'],['#3A7FC2','milk of magnesia'],['#4B5EB8','ammonia solution'],['#5B48A8','limewater'],['#6A3A9C','bleach'],['#7A2E8E','oven cleaner (NaOH)']];
+const phr=document.getElementById('phr');
+if(phr){const upd=()=>{const v=+phr.value;document.getElementById('phv').textContent=v;const b=document.getElementById('phbox');b.style.background=PH[v][0];b.style.color=(v<=1||v>=10)?'#fff':'#111';
+ document.getElementById('pht').textContent=v<7?(v<=3?'Strongly acidic':'Weakly acidic'):v==7?'Neutral':(v>=11?'Strongly alkaline':'Weakly alkaline');document.getElementById('phe').textContent='Example: '+PH[v][1]};phr.addEventListener('input',upd);upd()}
+
+// fractionating column
+const FR=[['Refinery gases','C1 to C4','Collects at the very top as gas.','Bottled LPG for cooking.'],['Petrol','C5 to C10','Condenses near the top.','Fuel for cars, motorbikes and tricycles.'],['Naphtha','C8 to C12','Condenses in the upper middle.','Raw material for plastics and other chemicals.'],['Kerosene','C10 to C16','Condenses in the middle.','Jet fuel and kerosene lamps.'],['Diesel','C14 to C20','Condenses in the lower middle.','Jeepneys, banca engines and generators.'],['Fuel oil','C20 to C40','Condenses near the bottom.','Fuel for large ships and power stations.'],['Bitumen','over C40','Stays at the bottom as a thick liquid.','Road surfaces and waterproof roofing.']];
+document.querySelectorAll('.fcol button').forEach(b=>b.addEventListener('click',()=>{const f=FR[+b.dataset.f];
+ document.querySelectorAll('.fcol button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+ document.getElementById('fout').innerHTML=`<b>${f[0]}</b><span>Chain length: ${f[1]}</span><span>${f[2]}</span><span>Used for: ${f[3]}</span>`}));
+
+// navigation
+const secs=[...stage.querySelectorAll('.slide')];let idx=0;
+const prog=document.getElementById('prog'),cnt=document.getElementById('cnt'),lbl=document.getElementById('lbl');
+function go(i,push=true){i=Math.max(0,Math.min(secs.length-1,i));secs[idx].classList.remove('on');idx=i;secs[i].classList.add('on');secs[i].scrollTop=0;
+ cnt.textContent=`${i+1} / ${secs.length}`;prog.style.width=((i+1)/secs.length*100)+'%';document.querySelector('.bar').style.setProperty('--uc',`var(--u${slides[i].u})`);lbl.textContent=slides[i].lbl;
+ if(push)history.replaceState(null,'','#'+(i+1))}
+document.getElementById('prev').onclick=()=>go(idx-1);document.getElementById('next').onclick=()=>go(idx+1);
+document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;
+ if(['ArrowRight','PageDown'].includes(e.key)){e.preventDefault();go(idx+1)}
+ else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(idx-1)}
+ else if(e.key==='Home')go(0);else if(e.key==='End')go(secs.length-1);else if(e.key==='Escape')closeMenu()});
+let tx=null,ty=null;stage.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+stage.addEventListener('touchend',e=>{if(tx===null||e.target.closest('input'))return;const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)go(idx+(dx<0?1:-1));tx=null});
+// menu
+const menu=document.getElementById('menu'),mbtn=document.getElementById('mbtn');
+let mh='';Object.keys(UNITS).forEach(u=>{mh+=`<div class="mu">Unit ${u}: ${UNITS[u]}</div>`;Object.keys(CH).filter(c=>CH[c][2]==u).forEach(c=>{mh+=`<button data-jump="ch${c}">${tile(c)}<span>${c}. ${CH[c][1]}</span></button>`})});
+menu.innerHTML=mh;
+function closeMenu(){menu.classList.remove('open');mbtn.setAttribute('aria-expanded','false')}
+mbtn.onclick=()=>{const o=menu.classList.toggle('open');mbtn.setAttribute('aria-expanded',o)};
+document.addEventListener('click',e=>{const j=e.target.closest('[data-jump]');if(j){go(firstOf[j.dataset.jump.slice(2)]);closeMenu();return}
+ if(!e.target.closest('#menu')&&e.target!==mbtn)closeMenu()});
+// theme
+const tb=document.getElementById('theme');const dark=()=>document.documentElement.dataset.theme?document.documentElement.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+const setT=()=>tb.textContent=dark()?'Light':'Dark';tb.onclick=()=>{document.documentElement.dataset.theme=dark()?'light':'dark';setT()};setT();
+const h=parseInt(location.hash.slice(1));go(isNaN(h)?0:h-1,false);
+})();
+</script>
+</body>
+</html>
